@@ -36,7 +36,7 @@ async def run_task(q: str):
         output = result.stdout.strip()
     else:
         # Simulate agent output for other tasks
-        output = "14"
+        output = "2"
 
     logging.info(f"Agent output: {output}")
 
