@@ -1,0 +1,26 @@
+name: Daily Commit Bot
+
+on:
+  schedule:
+    - cron: "30 9 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write  # 👈 gives workflow permission to push
+
+jobs:
+  daily-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 23f2005606@ds.study.iitm.ac.in
+        run: |
+          echo "Daily update on $(date)" >> daily_log.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add daily_log.txt
+          git commit -m "Automated daily commit $(date)"
+          git push
